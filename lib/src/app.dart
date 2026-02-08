@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'screens/main_screen.dart';
 
+// como es el uso del const?
 class App extends StatelessWidget {
   const App({super.key});
 
@@ -12,16 +13,16 @@ class App extends StatelessWidget {
       home: Scaffold(
         appBar: AppBar(title: const Text("ejemplo container"),),
         body: Center(
-          child: Container(
-            width: 200,
-            height: 100,
-            color: Colors.blueAccent,
-            child: const Center(
-              child: Text(
-                "hello container!",
-                style: TextStyle(color: Colors.white, fontSize: 20),
-              ),
-            ),    
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: const [
+              Text("primer elemento"),
+              SizedBox(height: 10),
+              ElevatedButton(onPressed: null, child: Text("btn")),
+              SizedBox(height: 10),
+              Text("tercer elemento")
+            ],    
           ),
         ),
       )
