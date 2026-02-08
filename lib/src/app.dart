@@ -9,19 +9,19 @@ class App extends StatelessWidget {
   Widget build(BuildContext context) {
     // MaterialApp es el widget que configura el tema, el titulo y la pantalla inicial
     return MaterialApp(
-      title: 'First app',
+      title: 'ejemplo row',
       home: Scaffold(
-        appBar: AppBar(title: const Text("ejemplo container"),),
+        appBar: AppBar(title: const Text("ejemplo row"),),
         body: Center(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: const [
-              Text("primer elemento"),
-              SizedBox(height: 10),
+              Text("elemento A"),
+              
               ElevatedButton(onPressed: null, child: Text("btn")),
-              SizedBox(height: 10),
-              Text("tercer elemento")
+              
+              Text("elemento b")
             ],    
           ),
         ),
