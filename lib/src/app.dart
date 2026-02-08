@@ -9,42 +9,41 @@ class App extends StatelessWidget {
   Widget build(BuildContext context) {
     // MaterialApp es el widget que configura el tema, el titulo y la pantalla inicial
     return MaterialApp(
-      title: 'ejemplo mix',
-      home: Scaffold(
-        appBar: AppBar(title: const Text("barra de iconos")),
-        body: Container(
-          color: Colors.black,
-          height: double.infinity,
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              _buildButtonColumn(Icons.call, 'Llamar'),
-              _buildButtonColumn(Icons.near_me, 'Ruta'),
-              _buildButtonColumn(Icons.share, 'Compartir'),
-            ],
-          ),
-        ),
-      ),
+      title: 'simple counter',
+      home: const CounterScreen(),
     );
   }
+}
 
-  Column _buildButtonColumn(IconData icon, String label) {
-    return Column(
-      mainAxisSize: MainAxisSize.min,
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: [
-        Icon(icon, color: Colors.blue),
-        SizedBox(height: 8), // espacio entre icon y text
-        Text(
-          label, 
-          style: TextStyle(
-            fontSize: 12,
-            fontWeight: FontWeight.w400,
-            color: Colors.blue
-          ),
+class CounterScreen extends StatefulWidget {
+  const CounterScreen({super.key});
+
+  @override
+  State<CounterScreen> createState() => _CounterScreenState();
+}
+
+class _CounterScreenState extends State<CounterScreen> {
+  int _counter = 0; // estado mutable
+
+  void _incrementCounter(){
+    setState(() {
+      _counter++;
+    });
+  }
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: Center(
+        child: Column(
+          // esto que significa?
+          children: <Widget>[
+            Text(
+              '$_counter'
+            ),
+            ElevatedButton(onPressed: _incrementCounter, child: const Text('increment')),
+          ],
         ),
-      ],
+      ),
     );
   }
 }
