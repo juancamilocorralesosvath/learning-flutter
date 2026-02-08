@@ -20,3 +20,4 @@ samples, guidance on mobile development, and a full API reference.
 preguntas:
 
 1. por que hay cosas que empiezan con _?
+2. por que se hace asi: fontWeight: FontWeight.bold

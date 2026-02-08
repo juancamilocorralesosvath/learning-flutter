@@ -38,7 +38,12 @@ class _CounterScreenState extends State<CounterScreen> {
           // esto que significa?
           children: <Widget>[
             Text(
-              '$_counter'
+              '$_counter', 
+              style: TextStyle(
+                color: Colors.red,
+                fontSize: 24,
+                fontWeight: FontWeight.bold
+              ),
             ),
             ElevatedButton(onPressed: _incrementCounter, child: const Text('increment')),
           ],
