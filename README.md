@@ -23,3 +23,18 @@ preguntas:
 2. por que se hace asi: fontWeight: FontWeight.bold
 3. la seccion de textfield: autzilio
 4. input decoration no tiene ejemplo
+
+## ojo
+para poder usar imagenes hay que ir al archivo pubspec.yaml
+y en la seccion flutter agregar la clave assets:
+
+```bash
+flutter:
+  assets:
+    - assets/
+```
+
+luego crear la carpeta assets en la raiz del proyecto, colocar imagenes 
+
+y por ultimo ejecutar 
+`flutter pub get`

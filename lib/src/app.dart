@@ -6,49 +6,28 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Ejemplo Botones',
+      title: 'Ejemplo Image Widget',
       home: Scaffold(
-        appBar: AppBar(title: const Text('Widgets Button')),
+        appBar: AppBar(title: const Text('Widget Image')),
         body: Center(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
-              ElevatedButton(
-                onPressed: () {
-                  print('ElevatedButton presionado!');
-                },
-                child: const Text('Botón Elevado'),
+              const Text('Imagen desde Internet:'),
+              const SizedBox(height: 10),
+              Image.network(
+                'https://yt3.googleusercontent.com/2__G-ckA66-4JgXPlHTGZvg8CoUIgDU6qYFnJqW-AsVeJvBRT4hCjXz4XMOjIqm4m7v431lT=s900-c-k-c0x00ffffff-no-rj',
+                width: 250,
+                height: 250,
+                fit: BoxFit.cover,
               ),
-              const SizedBox(height: 20),
-              TextButton(
-                onPressed: () {
-                  print('TextButton presionado!');
-                },
-                child: const Text('Botón de Texto'),
-              ),
-              const SizedBox(height: 20),
-              OutlinedButton(
-                onPressed: () {
-                  print('OutlinedButton presionado!');
-                },
-                child: const Text('Botón con Borde'),
-              ),
-              const SizedBox(height: 20),
-              IconButton(
-                icon: const Icon(Icons.settings),
-                onPressed: () {
-                  print('IconButton presionado!');
-                },
-                color: Colors.blue,
-                iconSize: 40.0,
-              ),
-              const SizedBox(height: 20),
-              ElevatedButton.icon(
-                onPressed: () {
-                  print('ElevatedButton.icon presionado!');
-                },
-                icon: const Icon(Icons.add),
-                label: const Text('Añadir'),
+              const SizedBox(height: 30),
+              const Text('Imagen desde Assets:'),
+              const SizedBox(height: 10),
+              Image.asset(
+                'assets/logo.jpg', 
+                width: 200, 
+                height: 200
               ),
             ],
           ),
