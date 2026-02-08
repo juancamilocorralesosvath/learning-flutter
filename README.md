@@ -21,3 +21,4 @@ preguntas:
 
 1. por que hay cosas que empiezan con _?
 2. por que se hace asi: fontWeight: FontWeight.bold
+3. la seccion de textfield: autzilio

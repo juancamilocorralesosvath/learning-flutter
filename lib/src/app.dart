@@ -1,54 +1,61 @@
 import 'package:flutter/material.dart';
-import 'screens/main_screen.dart';
 
-// como es el uso del const?
-class App extends StatelessWidget {
-  const App({super.key});
+class FormScreen extends StatefulWidget {
+  const FormScreen({super.key});
+  @override
+  State<FormScreen> createState() => FormScreenState();
+}
+
+class FormScreenState extends State<FormScreen> {
+  final _controller = TextEditingController();
+  String _textoMostrado = "";
+  @override
+  void dispose() {
+    _controller.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
-    // MaterialApp es el widget que configura el tema, el titulo y la pantalla inicial
-    return MaterialApp(
-      title: 'simple counter',
-      home: const CounterScreen(),
+    return Scaffold(
+      appBar: AppBar(title: const Text("Formulario con Label")),
+      body: Padding(
+        padding: const EdgeInsets.all(16.0),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            TextField(
+              controller: _controller,
+              decoration: const InputDecoration(labelText: "Escribe algo"),
+            ),
+            const SizedBox(height: 20),
+            ElevatedButton(
+              onPressed: () {
+                setState(() {
+                  _textoMostrado = _controller.text; // 🔹 Guardamos el texto al presionar el botón
+                });
+              },
+              child: const Text("Mostrar texto"),
+            ),
+            const SizedBox(height: 20),
+            Text(
+              _textoMostrado,
+              style: const TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
+            ),
+          ],
+        ),
+      ),
     );
   }
 }
 
-class CounterScreen extends StatefulWidget {
-  const CounterScreen({super.key});
+class MyApp extends StatelessWidget {
+  const MyApp({super.key});
 
-  @override
-  State<CounterScreen> createState() => _CounterScreenState();
-}
-
-class _CounterScreenState extends State<CounterScreen> {
-  int _counter = 0; // estado mutable
-
-  void _incrementCounter(){
-    setState(() {
-      _counter++;
-    });
-  }
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Center(
-        child: Column(
-          // esto que significa?
-          children: <Widget>[
-            Text(
-              '$_counter', 
-              style: TextStyle(
-                color: Colors.red,
-                fontSize: 24,
-                fontWeight: FontWeight.bold
-              ),
-            ),
-            ElevatedButton(onPressed: _incrementCounter, child: const Text('increment')),
-          ],
-        ),
-      ),
+    return const MaterialApp(
+      home: FormScreen()
     );
   }
 }
