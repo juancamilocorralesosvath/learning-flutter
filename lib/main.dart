@@ -4,5 +4,5 @@ import 'src/app.dart';
 
 void main() {
   // App es el widget principal
-  runApp(const App());
+  runApp(const MyApp());
 }
