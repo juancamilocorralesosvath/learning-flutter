@@ -202,3 +202,87 @@ ElevatedButton(
   child: const Text('¡No!'),
 )
 ```
+
+### Navegacion con BottomNavigationBar
+para implementarla necesitamos un stateful widget que gestione el estado de la pestaña seleccionada.
+Cada `BottomNavigationBarItem` representa una pestaña: 
+
+```bash
+Scaffold(
+  appBar: AppBar(
+    title: const Text('BottomNavBar Demo'),
+  ),
+  body: // Aquí irá la pantalla seleccionada,
+  bottomNavigationBar: BottomNavigationBar(
+    items: const <BottomNavigationBarItem>[
+      BottomNavigationBarItem(
+        icon: Icon(Icons.home),
+        label: 'Inicio',
+      ),
+      BottomNavigationBarItem(
+        icon: Icon(Icons.business),
+        label: 'Negocios',
+      ),
+      BottomNavigationBarItem(
+        icon: Icon(Icons.school),
+        label: 'Escuela',
+      ),
+    ],
+  ),
+);
+```
+#### Manejo del estado y la interaccion
+necesitamos tres cosas: 
+1. almacenar el indice de la pestaña actual
+2. lista de widgets (pantallas) a mostrar
+3. funcion a ejecutar cuando el user toque una pestaña
+
+```bash
+int _selectedIndex = 0; // Índice de la pestaña activa
+
+// Lista de pantallas que se mostrarán
+static const List<Widget> _widgetOptions = <Widget>[
+  Text('Index 0: Inicio'),
+  Text('Index 1: Negocios'),
+  Text('Index 2: Escuela'),
+];
+
+// Función para cambio de pestaña
+void _onItemTapped(int index) {
+  setState(() {
+    _selectedIndex = index;
+  });
+}
+```
+
+conectando las cosas: 
+
+```bash
+Scaffold(
+  appBar: AppBar(
+    title: const Text('BottomNavBar Demo'),
+  ),
+  body: Center(
+    child: _widgetOptions.elementAt(_selectedIndex), // Muestra la pantalla seleccionada
+  ),
+  bottomNavigationBar: BottomNavigationBar(
+    items: const <BottomNavigationBarItem>[
+      BottomNavigationBarItem(
+        icon: Icon(Icons.home),
+        label: 'Inicio',
+      ),
+      BottomNavigationBarItem(
+        icon: Icon(Icons.business),
+        label: 'Negocios',
+      ),
+      BottomNavigationBarItem(
+        icon: Icon(Icons.school),
+        label: 'Escuela',
+      ),
+    ],
+    currentIndex: _selectedIndex, // Resalta la pestaña activa
+    selectedItemColor: Colors.amber[800], // Color del ítem seleccionado
+    onTap: _onItemTapped, // Llama a la función al dar click
+  ),
+);
+```
